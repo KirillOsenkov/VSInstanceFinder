@@ -7,7 +7,7 @@
     <ProjectGuid>{9143A63B-79CA-4EE4-A321-528921A67006}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AssemblyName>MSBuildFinder</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>

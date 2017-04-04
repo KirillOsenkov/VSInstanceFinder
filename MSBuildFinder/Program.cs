@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices.ComTypes;
 using Microsoft.VisualStudio.Setup.Configuration;
 
 class Program
@@ -34,17 +35,27 @@ class Program
                     continue;
                 }
 
-                Console.WriteLine($"{instance.GetDisplayName()} {version} {state} {instance.GetInstallationPath()} ");
+                Console.WriteLine($@"Instance: {instance.GetDisplayName()}
+    Version: {version}
+    State: {state}
+    Path: {instance.GetInstallationPath()}
+    Description: {instance.GetDescription()}
+    Installation name: {instance.GetInstallationName()}
+    Instance Id: {instance.GetInstanceId()}
+    Install Date: {GetDateTime(instance.GetInstallDate())}");
 
-                // If the install was complete and a valid version, consider it.
-                if (state == InstanceState.Complete)
-                {
-                }
             } while (fetched > 0);
         }
         catch
         {
         }
+    }
+
+    private static object GetDateTime(FILETIME time)
+    {
+        long highBits = time.dwHighDateTime;
+        highBits = highBits << 32;
+        return DateTime.FromFileTimeUtc(highBits + (uint)time.dwLowDateTime);
     }
 }
 
